@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weater_app/controller/home_controller.dart';
 import 'package:weater_app/view/home/widget/day_button.dart';
 import 'package:weater_app/view/home/widget/sunset_time_card.dart';
 import 'package:weater_app/view/home/widget/temp_card.dart';
@@ -9,6 +10,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController());
+  var  service=   homeController.weatherData.value;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -33,8 +36,8 @@ class Home extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    "Dhaka",
+                  Text(
+                    service.name ?? "Location",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
