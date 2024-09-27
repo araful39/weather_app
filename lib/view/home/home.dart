@@ -180,12 +180,13 @@ class Home extends StatelessWidget {
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: [
-                 
-                  
-                  Image.asset("assets/subtract.png", height: Get.height*0.35,width: Get.width,),
+                  Image.asset(
+                    "assets/subtract.png",
+                    height: Get.height * 0.35,
+                    width: Get.width,
+                  ),
                   Positioned(
-                    top:-8,
-
+                    top: -8,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -201,21 +202,26 @@ class Home extends StatelessWidget {
                             )
                           ],
                         ),
-
                       ],
                     ),
                   ),
                   const Column(
                     children: [
-                      
-                      SunsetTimeCard(imageUrl: 'assets/sun-fog.png', sunsetTime: '', sunriseTime: '',),
+                      SunsetTimeCard(
+                        imageUrl: 'assets/sun-fog.png',
+                        sunsetTime: '',
+                        sunriseTime: '',
+                      ),
                       SizedBox(
                         height: 10,
                       ),
-                      SunsetTimeCard(imageUrl: 'assets/sun.png', sunsetTime: '', sunriseTime: '',),
+                      SunsetTimeCard(
+                        imageUrl: 'assets/sun.png',
+                        sunsetTime: '',
+                        sunriseTime: '',
+                      ),
                     ],
                   ),
-
                 ],
               )
             ],
@@ -225,5 +231,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-
