@@ -28,6 +28,11 @@ class Home extends StatelessWidget {
                     color:Colors.white,
                   ),Text("Current Location",style: TextStyle(color: Colors.white),)
                 ],
+              ),
+              Row(
+                children: [
+
+                ],
               )
             ],
           ),
