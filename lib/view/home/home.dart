@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weater_app/view/home/widget/day_button.dart';
+import 'package:weater_app/view/home/widget/temp_card.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -128,13 +129,36 @@ class Home extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  DayButton(onTap: () {  }, name: 'To Day',),
+                  DayButton(
+                    onTap: () {},
+                    name: 'To Day',
+                  ),
                   const SizedBox(
                     width: 10,
                   ),
-                   DayButton(onTap: () {  }, name: 'Next Days',),
+                  DayButton(
+                    onTap: () {},
+                    name: 'Next Days',
+                  ),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+             Padding(
+               padding: const EdgeInsets.only(left: 10),
+               child: SizedBox(
+                 height: 100,
+                 child: ListView.builder(
+
+                   shrinkWrap: true,
+                   scrollDirection: Axis.horizontal,
+                     itemCount: 10,
+                     itemBuilder: (context,index){
+                   return   const TemperatureCard(time: 'Now', imageUrl: 'assets/cloudy.png', temp: '15',);
+                 }),
+               ),
+             )
             ],
           ),
         ),
