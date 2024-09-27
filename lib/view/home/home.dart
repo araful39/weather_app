@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weater_app/view/home/widget/day_button.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,20 +9,17 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [
-                Color(0xFF97ABFF),
-                Color(0xFF121397),
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp),
-
-
-        ),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color(0xFF97ABFF),
+                  Color(0xFF121397),
+                ],
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,10 +55,7 @@ class Home extends StatelessWidget {
                     children: [
                       Text(
                         "13",
-                        style: TextStyle(
-                            color: Colors.white,
-
-                            fontSize: 100),
+                        style: TextStyle(color: Colors.white, fontSize: 100),
                       ),
                       Icon(
                         Icons.circle_outlined,
@@ -71,11 +66,9 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
-             
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   Row(
                     children: [
                       Text(
@@ -129,47 +122,17 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
-const SizedBox(
-  height: 20,
-),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-
-
-
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.white.withOpacity(0.2)
-                      ),
-
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                        child: Text("Today",style: TextStyle(color: Colors.white),),
-                      ),
-                    ),
+                  DayButton(onTap: () {  }, name: 'To Day',),
+                  const SizedBox(
+                    width: 10,
                   ),
-                  const SizedBox(width: 10,),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-
-
-
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white.withOpacity(0.1)
-                      ),
-
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                        child: Text("Next Days",style: TextStyle(color: Colors.white),),
-                      ),
-                    ),
-                  ),
+                   DayButton(onTap: () {  }, name: 'Next Days',),
                 ],
               )
             ],
@@ -179,3 +142,5 @@ const SizedBox(
     );
   }
 }
+
+
