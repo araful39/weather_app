@@ -5,11 +5,33 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [
-          
-        ],
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          color: const Color(0xff97ABFF),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Dhaka",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.location_on_sharp,
+                    color:Colors.white,
+                  ),Text("Current Location",style: TextStyle(color: Colors.white),)
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
