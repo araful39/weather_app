@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.white,
 
-                            fontSize: 80),
+                            fontSize: 100),
                       ),
                       Icon(
                         Icons.circle_outlined,
@@ -129,6 +129,49 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
+const SizedBox(
+  height: 20,
+),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+
+
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white.withOpacity(0.2)
+                      ),
+
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                        child: Text("Today",style: TextStyle(color: Colors.white),),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10,),
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+
+
+
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white.withOpacity(0.1)
+                      ),
+
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                        child: Text("Next Days",style: TextStyle(color: Colors.white),),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
