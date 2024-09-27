@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:weater_app/view/home/widget/day_button.dart';
+import 'package:weater_app/view/home/widget/sunset_time_card.dart';
 import 'package:weater_app/view/home/widget/temp_card.dart';
 
 class Home extends StatelessWidget {
@@ -22,143 +24,194 @@ class Home extends StatelessWidget {
                 tileMode: TileMode.clamp),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Dhaka",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.location_on_sharp,
-                    color: Colors.white,
+                  const Text(
+                    "Dhaka",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "Current Location",
-                    style: TextStyle(color: Colors.white),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset("assets/cloudy.png"),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        "13",
-                        style: TextStyle(color: Colors.white, fontSize: 100),
-                      ),
                       Icon(
-                        Icons.circle_outlined,
+                        Icons.location_on_sharp,
                         color: Colors.white,
-                        size: 30,
+                      ),
+                      Text(
+                        "Current Location",
+                        style: TextStyle(color: Colors.white),
                       )
                     ],
-                  )
-                ],
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Partly Cloud -",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Row(
+                      Image.asset("assets/cloudy.png"),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "H:10",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            "13",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 100),
                           ),
                           Icon(
                             Icons.circle_outlined,
                             color: Colors.white,
-                            size: 5,
+                            size: 30,
                           )
                         ],
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "L:4",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            Icons.circle_outlined,
-                            color: Colors.white,
-                            size: 5,
-                          )
-                        ],
-                      ),
+                      )
                     ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  DayButton(
-                    onTap: () {},
-                    name: 'To Day',
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Partly Cloud -",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "H:10",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Icon(
+                                Icons.circle_outlined,
+                                color: Colors.white,
+                                size: 5,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "L:4",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Icon(
+                                Icons.circle_outlined,
+                                color: Colors.white,
+                                size: 5,
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                   const SizedBox(
-                    width: 10,
+                    height: 20,
                   ),
-                  DayButton(
-                    onTap: () {},
-                    name: 'Next Days',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      DayButton(
+                        onTap: () {},
+                        name: 'To Day',
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      DayButton(
+                        onTap: () {},
+                        name: 'Next Days',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: SizedBox(
+                      height: 100,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return const TemperatureCard(
+                              time: 'Now',
+                              imageUrl: 'assets/cloudy.png',
+                              temp: '15',
+                            );
+                          }),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-             Padding(
-               padding: const EdgeInsets.only(left: 10),
-               child: SizedBox(
-                 height: 100,
-                 child: ListView.builder(
+              Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.center,
+                children: [
+                 
+                  
+                  Image.asset("assets/subtract.png", height: Get.height*0.35,width: Get.width,),
+                  Positioned(
+                    top:-8,
 
-                   shrinkWrap: true,
-                   scrollDirection: Axis.horizontal,
-                     itemCount: 10,
-                     itemBuilder: (context,index){
-                   return   const TemperatureCard(time: 'Now', imageUrl: 'assets/cloudy.png', temp: '15',);
-                 }),
-               ),
-             )
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Stack(
+                          children: [
+                            Image.asset("assets/ellipse.png"),
+                            Positioned(
+                                bottom: 1,
+                                right: 20,
+                                child: Image.asset("assets/vector.png")),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+
+                      ],
+                    ),
+                  ),
+                  const Column(
+                    children: [
+                      
+                      SunsetTimeCard(imageUrl: 'assets/sun-fog.png', sunsetTime: '', sunriseTime: '',),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SunsetTimeCard(imageUrl: 'assets/sun.png', sunsetTime: '', sunriseTime: '',),
+                    ],
+                  ),
+
+                ],
+              )
             ],
           ),
         ),
