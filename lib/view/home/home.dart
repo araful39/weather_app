@@ -30,6 +30,9 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const Text(
                     "Dhaka",
                     style: TextStyle(
@@ -49,6 +52,9 @@ class Home extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
