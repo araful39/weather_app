@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,13 +16,10 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Obx(
-          () {
-            var service = homeController.weatherModel.value;
+        child: Obx(() {
+          var service = homeController.weatherModel.value;
 
-            log("Service:$service");
-            return
-            Container(
+          return Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [
@@ -76,13 +72,17 @@ class Home extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset("assets/cloudy.png",height: 80,width: 80,),
-                               Row(
+                              Image.asset(
+                                "assets/cloudy.png",
+                                height: 80,
+                                width: 80,
+                              ),
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${((service.main!.temp)!-273).toStringAsFixed(1)}°C',
+                                    '${((service.main!.temp)! - 273).toStringAsFixed(1)}°C',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 50),
                                   ),
@@ -95,7 +95,7 @@ class Home extends StatelessWidget {
                               )
                             ],
                           ),
-                         Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
@@ -111,7 +111,8 @@ class Home extends StatelessWidget {
                                     width: 20,
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'H:${(service.main!.tempMax! - 273.15).toStringAsFixed(1)}°C',
@@ -130,10 +131,8 @@ class Home extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-
                                     ],
                                   ),
-
                                 ],
                               )
                             ],
@@ -209,12 +208,16 @@ class Home extends StatelessWidget {
                               ],
                             ),
                           ),
-                           Column(
+                          Column(
                             children: [
                               SunsetTimeCard(
                                 imageUrl: 'assets/sun-fog.png',
-                                sunsetTime:   DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(service.sys!.sunrise! * 1000)),
-                                sunriseTime:  DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(service.sys!.sunset! * 1000)),
+                                sunsetTime: DateFormat.jm().format(
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        service.sys!.sunrise! * 1000)),
+                                sunriseTime: DateFormat.jm().format(
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        service.sys!.sunset! * 1000)),
                               ),
                               const SizedBox(
                                 height: 10,
@@ -230,8 +233,8 @@ class Home extends StatelessWidget {
                       )
                     ],
                   ),
-          );}
-        ),
+          );
+        }),
       ),
     );
   }
