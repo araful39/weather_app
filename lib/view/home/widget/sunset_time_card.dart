@@ -25,24 +25,14 @@ final String sunriseTime;
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("Sunset",style: TextStyle(color: Colors.white),),
-              Row(
-                children: [
-                  Text(sunsetTime,style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),),
-                  const Text("PM",style: TextStyle(color: Colors.white),),
-                ],
-              ),
+              Text(sunsetTime,style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),),
             ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("Sunrise",style: TextStyle(color: Colors.white),),
-              Row(
-                children: [
-                  Text(sunriseTime,style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),),
-                  const Text("AM",style: TextStyle(color: Colors.white),),
-                ],
-              ),
+              Text(sunriseTime,style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),),
             ],
           ),
         ],

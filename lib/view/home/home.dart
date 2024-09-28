@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weater_app/controller/home_controller.dart';
 import 'package:weater_app/view/home/widget/day_button.dart';
 import 'package:weater_app/view/home/widget/sunset_time_card.dart';
 import 'package:weater_app/view/home/widget/temp_card.dart';
+import 'package:intl/intl.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -16,7 +19,9 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Obx(
           () {
-            var service = homeController.weatherData.value;
+            var service = homeController.weatherModel.value;
+
+            log("Service:$service");
             return
             Container(
             decoration: const BoxDecoration(
@@ -45,7 +50,7 @@ class Home extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            service.location ?? "Location",
+                            service.name ?? "Location",
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,
@@ -77,11 +82,11 @@ class Home extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${service.currentTemp.toStringAsFixed(1)}°C',
+                                    '${((service.main!.temp)!-273).toStringAsFixed(1)}°C',
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 50),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.circle_outlined,
                                     color: Colors.white,
                                     size: 30,
@@ -95,29 +100,32 @@ class Home extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Partly Cloud -",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20,
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                  'H:${service.highTemp.toStringAsFixed(1)}°',
-                                        style: TextStyle(
+                                        'H:${(service.main!.tempMax! - 273.15).toStringAsFixed(1)}°C',
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
                                       Text(
-                                        " L:${service.lowTemp.toStringAsFixed(1)}°",
-                                        style: TextStyle(
+                                        'L:${(service.main!.tempMin! - 273.15).toStringAsFixed(1)}°C',
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -205,13 +213,13 @@ class Home extends StatelessWidget {
                             children: [
                               SunsetTimeCard(
                                 imageUrl: 'assets/sun-fog.png',
-                                sunsetTime: service.sunrise,
-                                sunriseTime: service.sunrise,
+                                sunsetTime:   DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(service.sys!.sunrise! * 1000)),
+                                sunriseTime:  DateFormat.jm().format(DateTime.fromMillisecondsSinceEpoch(service.sys!.sunset! * 1000)),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              SunsetTimeCard(
+                              const SunsetTimeCard(
                                 imageUrl: 'assets/sun.png',
                                 sunsetTime: '',
                                 sunriseTime: '',
